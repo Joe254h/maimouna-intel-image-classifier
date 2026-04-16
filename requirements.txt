@@ -1,7 +1,8 @@
-
 streamlit
 torch
 torchvision
 tensorflow-cpu
 Pillow
 numpy
+Flask
+gunicorn
