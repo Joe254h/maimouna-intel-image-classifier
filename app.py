@@ -77,7 +77,10 @@ def load_tensorflow_model():
     if _TENSORFLOW is None:
         import tensorflow as tf
 
-        _TENSORFLOW = tf.keras.models.load_model("maimouna_model.keras")
+        tf.keras.backend.clear_session()
+        _TENSORFLOW = tf.keras.models.load_model(
+            "maimouna_model.keras", compile=False
+        )
     return _TENSORFLOW
 
 
