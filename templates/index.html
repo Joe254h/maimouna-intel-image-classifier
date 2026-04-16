@@ -89,6 +89,7 @@
         const resultBox      = document.getElementById("resultBox");
         const errorBox       = document.getElementById("errorBox");
         const modelSelect    = document.getElementById("modelSelect");
+        let selectedFile     = null;
 
         // ── Click to upload ──────────────────────────────
         uploadArea.addEventListener("click", () => imageInput.click());
@@ -114,6 +115,7 @@
         });
 
         function handleFile(file) {
+            selectedFile = file;
             const reader = new FileReader();
             reader.onload = (e) => {
                 previewImg.src = e.target.result;
@@ -128,7 +130,7 @@
 
         // ── Predict ──────────────────────────────────────
         predictBtn.addEventListener("click", async () => {
-            const file = imageInput.files[0];
+            const file = selectedFile || imageInput.files[0];
             if (!file) return;
 
             // Show loader
